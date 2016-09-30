@@ -1,4 +1,5 @@
 FROM ubuntu
+MAINTAINER mhiroaki
 
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
