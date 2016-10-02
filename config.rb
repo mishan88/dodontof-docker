@@ -134,7 +134,7 @@ $isWelcomeMessageOn = true
 $dbType = "mysql"
 
 #MySQLを使用する場合のDB設定。
-$databaseHostName = "127.0.0.1"
+$databaseHostName = "localhost"
 $databaseName = "dodontof"
 $databaseUserName = "dodontof"
 $databasePassword = "!!!DBPASS!!!"
