@@ -49,7 +49,7 @@ else
   echo "DB:$DB is already created"
 fi
 
-echo "start apache2"
-. /etc/apache2/envvars
-rm -f /var/run/apache2/apache2.pid
-/usr/sbin/apache2 -D FOREGROUND
+echo "start fcgi"
+/usr/bin/spawn-fcgi -u www-data -d /var/www/html/ -f /var/www/dodontoF-fcgi.rb -s /run/dodontof.sock -P /run/dodontof.pid -F 10
+echo "start nginx"
+/usr/sbin/nginx -g 'daemon off;'

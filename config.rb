@@ -159,7 +159,7 @@ $unloadablePlayRoomNumbers = [0]
 $noPasswordPlayRoomNumbers = [0]
 
 #FirstCGIを使用する場合にはtrueに設定。通常のCGIであればfalseのまま。
-$isFirstCgi = false
+$isFirstCgi = true
 
 #mod_rubyを使用する場合にはtrueに設定。通常のCGIであればfalseのまま。
 $isModRuby = false

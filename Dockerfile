@@ -3,23 +3,19 @@ MAINTAINER mhiroaki
 
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
- && apt-get install -y --no-install-recommends wget unzip mysql-server ruby ruby-mysql ruby-msgpack apache2 \
+ && apt-get install -y --no-install-recommends wget unzip mysql-server ruby ruby-mysql ruby-msgpack ruby-fcgi nginx spawn-fcgi\
  && apt-get clean \
  && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* \
  && install -d -o mysql -g mysql -m 755 /var/run/mysqld \
- && ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock \
- && ln -s ../mods-available/cgi.load /etc/apache2/mods-enabled \
- && install -d /var/lock/apache2 \
- && install -d /var/run/apache2 \
- && echo 'ServerName dodontof' > /etc/apache2/conf-enabled/servername.conf
-
+ && ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
 ADD mysqld.cnf /etc/mysql/mysql.conf.d/
-ADD dodontof.conf /etc/apache2/sites-enabled/
+COPY nginx_dodontof.conf /etc/nginx/sites-available/default
 ADD run.sh /
 
 CMD [ "/run.sh" ]
 EXPOSE 80
 VOLUME /var/lib/mysql
+ADD dodontoF-fcgi.rb /var/www/
 
 ARG DODONTOF_VERSION=Ver.1.48.18
 ADD sha256sum /var/tmp
