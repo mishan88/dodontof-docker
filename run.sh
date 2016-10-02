@@ -30,7 +30,7 @@ echo "MENTENANCEPASS=$MENTENANCEPASS"
 
 sed -e 's/!!!DBPASS!!!/'"$DBPASS"'/g' \
     -e 's/!!!MENTENANCEPASS!!!/'"$MENTENANCEPASS"'/g' \
-    /var/www/html/DodontoF/src_ruby/config.rb.in >/var/www/html/DodontoF/src_ruby/config.rb
+    /var/www/html/src_ruby/config.rb.in >/var/www/html/src_ruby/config.rb
 
 echo start mysqld
 /usr/sbin/mysqld &

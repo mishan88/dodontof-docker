@@ -32,12 +32,13 @@ RUN cd /var/tmp/ \
  && echo "$SHA256 DodontoF.zip" | sha256sum -c \
  && unzip DodontoF.zip \
  && rm -f /var/tmp/DodontoF.zip \
- && mv /var/tmp/DodontoF_WebSet/public_html/DodontoF /var/www/html/ \
+ && rm -f /var/www/html/index.html \
+ && mv /var/tmp/DodontoF_WebSet/public_html/DodontoF/* /var/www/html/ \
  && mv /var/tmp/DodontoF_WebSet/saveData /var/www/ \
  && mv /var/tmp/DodontoF_WebSet/public_html/imageUploadSpace/ /var/www/html/ \
  && find /var/www/saveData -type d | xargs chmod 777 \
  && find /var/www/saveData -type f | xargs chmod 666 \
- && cd /var/www/html/DodontoF \
+ && cd /var/www/html/ \
  && sed -i -e '/^#!/i #!/usr/bin/ruby' DodontoFServer.rb \
  && sed -i -e '/DodontoFServer\.rb/i if ($0 == __FILE__)' \
            -e '/DodontoFServer\.rb/a end' \
@@ -45,5 +46,5 @@ RUN cd /var/tmp/ \
  && sed -i -e '/^#!/i #!/usr/bin/ruby' DodontoFServerMySqlKai.rb \
  && chmod +x DodontoFServer.rb DodontoFServerMySqlKai.rb \
  && chmod 666 log.txt log.txt.0
-COPY config.rb /var/www/html/DodontoF/src_ruby/config.rb.in
+COPY config.rb /var/www/html/src_ruby/config.rb.in
 
