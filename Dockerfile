@@ -17,7 +17,7 @@ EXPOSE 80
 VOLUME /var/lib/mysql
 ADD dodontoF-fcgi.rb /var/www/
 
-ARG DODONTOF_VERSION=Ver.1.48.18
+ARG DODONTOF_VERSION=Ver.1.48.22
 ADD sha256sum /var/tmp
 
 RUN cd /var/tmp/ \
